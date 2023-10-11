@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import logo from "../img/promo-SFTS.jpg";
+import logo from "../img/photo-sfts.jpg";
 import {Link} from "react-router-dom";
 
 

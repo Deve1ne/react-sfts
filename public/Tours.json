@@ -1,5 +1,85 @@
 
    [
+     {
+       "date": "10/26/2023",
+       "lieu": "Bordeaux, FR @ L'Antidote"
+     },
+     {
+       "date": "10/26/2023",
+       "lieu": "Tarbes, FR @ Celtic Pub"
+     },
+     {
+       "date": "10/26/2023",
+       "lieu": "Santander, ES @ Rock Beer the New"
+     },
+     {
+       "date": "10/26/2023",
+       "lieu": "Leon, ES @ Black Bourbon"
+     },
+     {
+       "date": "10/26/2023",
+       "lieu": "Ribeira, ES @ Heaven And Hell"
+     },
+     {
+       "date": "10/26/2023",
+       "lieu": "Sarria, ES @ Buril"
+     },
+     {
+       "date": "10/26/2023",
+       "lieu": "Porto, PT @ Barracuda club de roque"
+     },
+     {
+       "date": "10/26/2023",
+       "lieu": "Don Benito, ES @ The Rinçon Pio Sound"
+     },
+     {
+       "date": "10/26/2023",
+       "lieu": "Lisboa, PT @ Disgraça concert hall"
+     },
+     {
+       "date": "10/25/2023",
+       "lieu": "Madrid, ES @ El Perro"
+     },
+     {
+       "date": "10/24/2023",
+       "lieu": "Tolosa, ES @ Bonberenea"
+     },
+     {
+       "date": "10/22/2023",
+       "lieu": "Marseille, FR @ La salle gueule"
+     },
+     {
+       "date": "10/21/2023",
+       "lieu": "Lyon, FR @ Le Farmer"
+     },
+     {
+       "date": "04/21/2023",
+       "lieu": "Mars-sur-Allier, FR @ Cyco Farmer Fest"
+     },
+     {
+       "date": "04/21/2023",
+       "lieu": "Le Mans, FR @ Le Lezard"
+     },
+     {
+       "date": "03/10/2023",
+       "lieu": "Le Mans, FR @ Le Lezard"
+     },
+     {
+       "date": "12/3/2022",
+       "lieu": "Carquefou, FR @ Black Shelter"
+     },
+     {
+       "date": "12/3/2022",
+       "lieu": "Angers, FR @ T'es Rock Coco"
+     },
+     {
+       "date": "05/28/2022",
+       "lieu": "Nantes, FR @ Le Ferrailleur"
+     },
+     {
+       "date": "05/19/2022",
+       "lieu": "Paris, FR @ Supersonic"
+     },
     {
       "date": "04/23/2022",
       "lieu": "Ghent, BE @ Den Drummer"
@@ -8,6 +88,10 @@
       "date": "04/22/2022",
       "lieu": "Hengelo, NL @ Innocent"
     },
+     {
+       "date": "04/20/2022",
+       "lieu": "Hamburg, DE @ Bar 227"
+     },
     {
       "date": "04/19/2022",
       "lieu": "Wien, AT @ Kramladen"
