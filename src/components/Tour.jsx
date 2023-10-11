@@ -27,7 +27,6 @@ function Tour() {
 
         fetchData();
     }, []);
-    console.log(tours)
 
 
     const futurShow = [];

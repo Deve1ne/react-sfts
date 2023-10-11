@@ -14,46 +14,31 @@ function Home() {
 
 
     useEffect(() => {
-        fetch("http://localhost:8080/bios")
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    setBio(result);
-                },
-                (error) => {
-                    setBio([]);
-
-
+        const fetchBio = async () => {
+            try {
+                const response = await fetch('/Bio.json');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
                 }
-            )
+                const jsonData = await response.json();
+                console.log(jsonData)
+                setBio(jsonData);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
 
-        fetch("http://localhost:8080/photos")
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    var src = "../../build/static/media/" + result[0].source;
-                    console.log(src)
-                    setImageUrl(src);
-                    setImageAlt(result[0].alt);
-                },
-                (error) => {
-                    setImageUrl([]);
-
-
-                }
-            )
-
-
+        fetchBio();
     }, []);
 
 
+
+
     for (let bi of bio) {
-        bioShow.push(<div><h6 className="fw-bold">{bi.Langue}</h6>
-            <p className="text-start">{bi.Text}</p></div>
+        bioShow.push(<div><h6 className="fw-bold">{bi.langue}</h6>
+            <p className="text-start">{bi.texte}</p></div>
         );
     }
-    ;
-
 
     urlImageShow.push(
         <div className="justify-content-center ">
@@ -74,11 +59,11 @@ function Home() {
                 <div className="  min-vh-100 d-flex align-items-center justify-content-center">
                     <div className="align-middle">
                         <h1 className=" titleSFTS text-light">STONE FROM THE SKY</h1>
-                        <h2 className="text-light mt-5 mb-4 order"><p>New album</p><p> "Songs From The Deepwater"</p>
+                        <h2 className="text-light mt-5 mb-4 order"><p> "Songs From The Deepwater"</p>
                         </h2>
                         <button type="button" className="btn btn-light ">
                             <Link className="nav-link fst-italic link-dark"
-                                  to={{pathname: "https://morefuzz.net/shop-category/stone-from-the-sky/"}}
+                                  to={{pathname: "https://stonefromthesky.bandcamp.com/merch"}}
                                   target="_blank">
                                 <h1> Order now</h1>
                             </Link></button>

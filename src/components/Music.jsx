@@ -8,36 +8,38 @@ function Music() {
     const [musicInfo, setMusicInfo] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:8080/videos")
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    console.log(result);
-                    setVideoInfo(result);
-                },
-                (error) => {
-                    setVideoInfo([]);
-
-
+        const fetchVideos = async () => {
+            try {
+                const response = await fetch('/Videos.json');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
                 }
-            )
+                const jsonData = await response.json();
+                setVideoInfo(jsonData);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
 
-        fetch("http://localhost:8080/albums")
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    setMusicInfo(result);
-                },
-                (error) => {
-                    setMusicInfo([]);
+        fetchVideos();
+    }, []);
 
-
+    useEffect(() => {
+        const fetchVideos = async () => {
+            try {
+                const response = await fetch('/Music.json');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
                 }
-            )
+                const jsonData = await response.json();
+                setMusicInfo(jsonData);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
 
-
-    }, [])
-
+        fetchVideos();
+    }, []);
 
     const musicShow = [];
 
@@ -52,11 +54,11 @@ function Music() {
 
 
     for (let mus of musicInfo) {
-        var src = "https://bandcamp.com/EmbeddedPlayer/album=" + mus.Stream + "/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/";
+        var src = "https://bandcamp.com/EmbeddedPlayer/album=" + mus.stream + "/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/";
         musicShow.push(
             <div className=" my-5 col-lg-6">
                 <div className="mx-2 bg-light p-2 ">
-                    <h2 className="font-weight-light">{mus.Titre} - {mus.Date} </h2>
+                    <h2 className="font-weight-light">{mus.titre} - {mus.date} </h2>
                     <hr/>
 
                     <div>
@@ -74,11 +76,11 @@ function Music() {
 
 
     for (let video of videoInfo) {
-        var vidSrc = "https://www.youtube.com/embed/" + video.Embed
+        var vidSrc = "https://www.youtube.com/embed/" + video.embed
         videoShow.push(
             <div className="my-5 rounded col-lg-6">
                 <div className="mx-2 bg-light p-2">
-                    <h2 className="font-weight-light"> {video.Titre}</h2>
+                    <h2 className="font-weight-light"> {video.titre}</h2>
                     <hr/>
 
                     <div className="youtube-video-container">
