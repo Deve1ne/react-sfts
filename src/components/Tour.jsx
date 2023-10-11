@@ -10,22 +10,24 @@ function Tour() {
 
     const [tours, setTours] = useState([]);
 
-
     useEffect(() => {
-        fetch("http://localhost:8080/tours")
-            .then(res => res.json())
-            .then(
-
-                (tour) => {
-                    console.log(tour);
-                    setTours(tour);
-                },
-                (error) => {
-                    setTours([]);
+        const fetchData = async () => {
+            try {
+                const response = await fetch('/Tours.json');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
                 }
-            )
-    }, [])
+                const jsonData = await response.json();
+                console.log(jsonData)
+                setTours(jsonData);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
 
+        fetchData();
+    }, []);
+    console.log(tours)
 
 
     const futurShow = [];
@@ -34,10 +36,9 @@ function Tour() {
     const pastShowDate = [];
 
     tours.sort(function (a, b) {
-        // Turn your strings into dates, and then subtract them
-        // to get a value that is either negative, positive, or zero.
+        console.log(a, b)
 
-        return new Date(b.Moment) - new Date(a.Moment);
+        return new Date(b.date) - new Date(a.date);
     });
 
 
@@ -45,9 +46,7 @@ function Tour() {
 
 
     for (let tour of tours) {
-       // console.log(new Date(tour.moment))
-
-        if (new Date(tour.Moment) >= now) {
+        if (new Date(tour.date) >= now) {
             futur = true;
         } else {
             past = true
@@ -60,13 +59,13 @@ function Tour() {
             <h2>Futur shows</h2>{futurShowDate}</div>);
 
         for (let tour of tours) {
-            if (new Date(tour.Moment) >= now) {
+            if (new Date(tour.date) >= now) {
                 futurShowDate.push(<div className="my-4">
-                    <h6> {tour.Lieu} - <span className="text-secondary">{tour.Moment}</span></h6>
+                    <h6> {tour.lieu} - <span className="text-secondary">{tour.date}</span></h6>
                 </div>);
 
             }
-            ;
+
         }
     }
     if (futur === true && past === true) {
@@ -80,13 +79,13 @@ function Tour() {
             <h2>Past shows</h2>{pastShowDate}</div>);
 
         for (let tour of tours) {
-            if (new Date(tour.Moment) < now) {
+            if (new Date(tour.date) < now) {
                 pastShowDate.push(<div className="my-4">
-                    <h6> {tour.Lieu} - <span className="text-secondary">{tour.Moment}</span></h6>
+                    <h6> {tour.lieu} - <span className="text-secondary">{tour.date}</span></h6>
                 </div>);
 
             }
-            ;
+
         }
     }
 
