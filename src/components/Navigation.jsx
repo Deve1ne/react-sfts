@@ -1,240 +1,102 @@
-import React, {useState} from "react";
-import Button from 'react-bootstrap/Button';
+import React, { useState } from "react";
+import { Link, withRouter } from "react-router-dom";
 import Collapse from 'react-bootstrap/Collapse';
-import {Link, withRouter} from "react-router-dom";
-
-
-
-var hidden = false;
-
-
 
 function Navigation(props) {
-
     const [open, setOpen] = useState(false);
+
+    const navLinks = [
+        { path: "/", label: "Home" },
+        { path: "/music", label: "Medias" },
+        { path: "https://stonefromthesky.bandcamp.com/merch", label: "Merch", external: true },
+        { path: "/tour", label: "Tour" },
+        { path: "/contact", label: "Contact" }
+    ];
+
+    const socialLinks = [
+        { path: "https://www.facebook.com/stonefromtheskystoner", icon: "fab fa-facebook-f" },
+        { path: "https://www.instagram.com/wearestonefromthesky/", icon: "fab fa-instagram" },
+        { path: "https://stonefromthesky.bandcamp.com", icon: "fab fa-bandcamp" },
+        { path: "https://www.youtube.com/channel/UClO7OOlbOHg9fzazIy8mDAw", icon: "fab fa-youtube" },
+        { path: "mailto:contact@stonefromthesky.fr", icon: "far fa-envelope" }
+    ];
+
+    const renderNavLinks = (isMobile = false) => {
+        return navLinks.map((link, index) => (
+            <li
+                key={index}
+                className={`nav-item mx-3 ${props.location.pathname === link.path ? "active" : ""}`}
+            >
+                <Link
+                    className="nav-link"
+                    to={link.external ? { pathname: link.path } : link.path}
+                    target={link.external ? "_blank" : ""}
+                    onClick={isMobile ? () => setOpen(!open) : undefined}
+                >
+                    {link.label}
+                </Link>
+            </li>
+        ));
+    };
+
+    const renderSocialLinks = () => {
+        return socialLinks.map((link, index) => (
+            <li key={index}>
+                <Link className="nav-link fs-3 mx-2" to={{ pathname: link.path }} target="_blank">
+                    <i className={`${link.icon} fa-xs`}></i>
+                </Link>
+            </li>
+        ));
+    };
+
     return (
-        <div className="navigation-fluid  background-transparency">
-            <nav id="largeMenu" className="navbar navbar-expand navbar-dark ">
+        <div className="navigation-fluid background-transparency">
+            <nav id="largeMenu" className="navbar navbar-expand navbar-dark">
                 <div className="container-fluid">
-
-
                     <div>
                         <ul className="navbar-nav ms-auto fs-4 fst-italic fw-bolder">
-                            <li
-                                className={`nav-item mx-3   ${
-                                    props.location.pathname === "/" ? "active" : ""
-                                }`}
-                            >
-                                <Link className="nav-link" to="/">
-                                    Home
-                                    <span className="sr-only"></span>
-                                </Link>
-                            </li>
-                            <li
-                                className={`nav-item mx-3  ${
-                                    props.location.pathname === "/music" ? "active" : ""
-                                }`}
-                            >
-                                <Link className="nav-link" to="/music">
-                                    Medias
-                                </Link>
-                            </li>
-                            <li className={`nav-item mx-3`}>
-                                <Link className="nav-link" to={{pathname: "https://stonefromthesky.bandcamp.com/merch"}}
-                                      target="_blank">
-                                    Merch
-                                </Link>
-                            </li>
-                            <li
-                                className={`nav-item mx-3  ${
-                                    props.location.pathname === "/tour" ? "active" : ""
-                                }`}
-                            >
-                                <Link className="nav-link" to="/tour">
-                                    Tour
-                                </Link>
-                            </li>
-                            <li
-                                className={`nav-item mx-3 ${
-                                    props.location.pathname === "/tour" ? "active" : ""
-                                }`}
-                            >
-                                <Link className="nav-link" to="/contact">
-                                    Contact
-                                </Link>
-                            </li>
-
+                            {renderNavLinks()}
                         </ul>
                     </div>
-
                     <div>
                         <ul className="navbar-nav ms-auto">
-
-                            <li>
-                                <Link className="nav-link fs-3 mx-2"
-                                      to={{pathname: "https://www.facebook.com/stonefromtheskystoner"}} target="_blank"><i
-                                    className="fab fa-facebook-f fa-xs"></i></Link>
-                            </li>
-                            <li>
-                                <Link className="nav-link fs-3 mx-2"
-                                      to={{pathname: "https://www.instagram.com/wearestonefromthesky/"}}
-                                      target="_blank"><i className="fab fa-instagram fa-xs"></i></Link>
-                            </li>
-                            <li>
-                                <Link className="nav-link fs-3 mx-2"
-                                      to={{pathname: "https://stonefromthesky.bandcamp.com"}} target="_blank"><i
-                                    className="fab fa-bandcamp fa-xs"></i></Link>
-                            </li>
-                            <li>
-                                <Link className="nav-link fs-3 mx-2"
-                                      to={{pathname: "https://www.youtube.com/channel/UClO7OOlbOHg9fzazIy8mDAw"}}
-                                      target="_blank"><i className="fab fa-youtube fa-xs"></i></Link>
-                            </li>
-                            <li>
-                                <Link className="nav-link fs-3 mx-2"
-                                      to={{pathname: "mailto:contact@stonefromthesky.fr"}} target="_blank"><i
-                                    className="far fa-envelope fa-xs"></i></Link>
-                            </li>
+                            {renderSocialLinks()}
                         </ul>
                     </div>
-
-
                 </div>
             </nav>
 
-            {/* partie smartphone */}
-
-
-
-
-
-
-
-
-
-
             <div id="burgerMenu">
-                <div  id="menuVertical">
-                    <div>
-                        <Collapse in={open}>
-                            <div className="navbar-dark p-4">
-                                <div>
-
-                                    <ul className="navbar-nav ms-auto fs-4 fst-italic fw-bolder">
-                                        <li
-                                            className={`nav-item mx-3   ${
-                                                props.location.pathname === "/" ? "active" : ""
-                                            }`}
-                                        >
-                                            <Link onClick={() => setOpen(!open)} className="nav-link" to="/">
-                                                Home
-                                                <span className="sr-only"></span>
-                                            </Link>
-                                        </li>
-                                        <li
-                                            className={`nav-item mx-3  ${
-                                                props.location.pathname === "/music" ? "active" : ""
-                                            }`}
-                                        >
-                                            <Link onClick={() => setOpen(!open)} className="nav-link" to="/music">
-                                                Medias
-                                            </Link>
-                                        </li>
-                                        <li className={`nav-item mx-3`}>
-                                            <Link onClick={() => setOpen(!open)} className="nav-link" to={{pathname: "https://stonefromthesky.bandcamp.com/merch"}}
-                                                  target="_blank">
-                                                Merch
-                                            </Link>
-                                        </li>
-                                        <li
-                                            className={`nav-item mx-3  ${
-                                                props.location.pathname === "/tour" ? "active" : ""
-                                            }`}
-                                        >
-                                            <Link onClick={() => setOpen(!open)} className="nav-link" to="/tour">
-                                                Tour
-                                                <div className="collapse" id="navbarToggleExternalContent">
-
-                                                </div>
-
-                                            </Link>
-                                        </li>
-                                        <li
-                                            className={`nav-item mx-3 ${
-                                                props.location.pathname === "/tour" ? "active" : ""
-                                            }`}
-                                        >
-                                            <Link onClick={() => setOpen(!open)} className="nav-link" to="/contact">
-                                                Contact
-                                            </Link>
-                                        </li>
-
-                                    </ul>
-                                </div>
-
-                            </div>
-                        </Collapse>
-                    </div>
-
-
-
+                <div id="menuVertical">
+                    <Collapse in={open}>
+                        <div className="navbar-dark p-4">
+                            <ul className="navbar-nav ms-auto fs-4 fst-italic fw-bolder">
+                                {renderNavLinks(true)}
+                            </ul>
+                        </div>
+                    </Collapse>
                 </div>
                 <nav className="navbar navbar-dark navbar-dark">
-                    <div className="container-fluid justify-content-center ">
+                    <div className="container-fluid justify-content-center">
                         <button
-                                className='navbar-toggler'
-
+                            className="navbar-toggler"
                             type="button"
-
-                                onClick={() => setOpen(!open)}
-                                aria-controls="example-collapse-text"
-                                aria-expanded={open}
+                            onClick={() => setOpen(!open)}
+                            aria-controls="example-collapse-text"
+                            aria-expanded={open}
                         >
                             <span className="navbar-toggler-icon"></span>
                         </button>
                     </div>
                 </nav>
-
-
-                <nav className="navbar navbar-expand navbar-dark ">
-                    <div className="container-fluid justify-content-center ">
-                        <div>
-                            <ul className="navbar-nav ms-auto">
-
-                                <li>
-                                    <Link className="nav-link fs-3 mx-2"
-                                          to={{pathname: "https://www.facebook.com/stonefromtheskystoner"}}
-                                          target="_blank"><i
-                                        className="fab fa-facebook-f fa-xs"></i></Link>
-                                </li>
-                                <li>
-                                    <Link className="nav-link fs-3 mx-2"
-                                          to={{pathname: "https://www.instagram.com/wearestonefromthesky/"}}
-                                          target="_blank"><i className="fab fa-instagram fa-xs"></i></Link>
-                                </li>
-                                <li>
-                                    <Link className="nav-link fs-3 mx-2"
-                                          to={{pathname: "https://stonefromthesky.bandcamp.com"}} target="_blank"><i
-                                        className="fab fa-bandcamp fa-xs"></i></Link>
-                                </li>
-                                <li>
-                                    <Link className="nav-link fs-3 mx-2"
-                                          to={{pathname: "https://www.youtube.com/channel/UClO7OOlbOHg9fzazIy8mDAw"}}
-                                          target="_blank"><i className="fab fa-youtube fa-xs"></i></Link>
-                                </li>
-                                <li>
-                                    <Link className="nav-link fs-3 mx-2"
-                                          to={{pathname: "mailto:contact@stonefromthesky.fr"}} target="_blank"><i
-                                        className="far fa-envelope fa-xs"></i></Link>
-                                </li>
-                            </ul>
-                        </div>
-
-
+                <nav className="navbar navbar-expand navbar-dark">
+                    <div className="container-fluid justify-content-center">
+                        <ul className="navbar-nav ms-auto">
+                            {renderSocialLinks()}
+                        </ul>
                     </div>
                 </nav>
             </div>
-
         </div>
     );
 }

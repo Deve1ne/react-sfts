@@ -2,16 +2,12 @@ import React, {useEffect, useState} from "react";
 import logo from "../img/photo-sfts.jpg";
 import {Link} from "react-router-dom";
 
-
 function Home() {
 
-
     const [bio, setBio] = useState([]);
-    const [imageUrl, setImageUrl] = useState([]);
-    const [imageAlt, setImageAlt] = useState([]);
+    const [imageAlt] = useState([]);
     const urlImageShow = [];
     const bioShow = [];
-
 
     useEffect(() => {
         const fetchBio = async () => {
@@ -31,30 +27,21 @@ function Home() {
         fetchBio();
     }, []);
 
-
-
-
     for (let bi of bio) {
         bioShow.push(<div><h6 className="fw-bold">{bi.langue}</h6>
-            <p className="text-start">{bi.texte}</p></div>
-        );
+            <p className="text-start">{bi.texte}</p></div>);
     }
 
-    urlImageShow.push(
-        <div className="justify-content-center ">
-            <img
-                className="img-fluid rounded  my-2"
-                  src={logo}
-           //     src={imageUrl}
-                alt={imageAlt}
-            />
-        </div>
-    );
+    urlImageShow.push(<div className="justify-content-center ">
+        <img
+            className="img-fluid rounded  my-2"
+            src={logo}
+            //     src={imageUrl}
+            alt={imageAlt}
+        />
+    </div>);
 
-
-    return (
-        <div className="home">
-
+    return (<div className="home">
             <div className="container">
                 <div className="  min-vh-100 d-flex align-items-center justify-content-center">
                     <div className="align-middle">
@@ -67,7 +54,6 @@ function Home() {
                                   target="_blank">
                                 <h1> Order now</h1>
                             </Link></button>
-
                     </div>
                 </div>
 
@@ -75,18 +61,12 @@ function Home() {
                     <div className="bg-light p-2 rounded my-5">
                         <h1 className="fw-light">-BIO-</h1>
                         {urlImageShow}
-
                         <hr className="little-line my-4"/>
                         {bioShow}
-
-
                     </div>
                 </div>
-
-
             </div>
-        </div>
-    );
+        </div>);
 }
 
 export default Home;

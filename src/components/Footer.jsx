@@ -9,7 +9,6 @@ function Footer() {
                        Sauf mention contraire, tous les contenus publiés par Stone From The Sky (y compris ce site, les
                         médias qu’il contient, et les codes sur lesquels il repose) sont déposés sous Licence Art Libre 1.3.
                     </p>
-
                 </div>
             </footer>
         </div>

@@ -2,7 +2,7 @@
   "name": "react-sfts",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://stonefromthesky.ammd.net",
+  "homepage": "https://stonefromthesky.fr",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -19,14 +19,14 @@
     "react-iframe": "^1.8.0",
     "react-player": "^2.9.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.3",
+    "react-scripts": "^5.0.1",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts --openssl-legacy-provider start",
-    "build": "react-scripts --openssl-legacy-provider build",
-    "test": "react-scripts --openssl-legacy-provider test",
-    "eject": "react-scripts --openssl-legacy-provider eject"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -45,5 +45,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^8.57.1",
+    "eslint-plugin-jest": "^28.11.0",
+    "eslint-plugin-jest-dom": "^5.5.0",
+    "eslint-plugin-testing-library": "^7.1.1"
   }
 }
