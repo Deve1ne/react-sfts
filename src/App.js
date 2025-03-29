@@ -1,17 +1,12 @@
 import React from "react";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import {Navigation, Footer, Home, Music, Tour, Contact} from "./components";
-import clip from './img/intermediaire.mp4';
 
 
 function App() {
     return (
         <div className="App">
 
-            <video className='fullscreen-bg' autoPlay loop muted>
-                <source src={clip} type='video/mp4'/>
-                <source src={clip} type="video/ogg"/>
-            </video>
 
             <Router>
                 <Navigation/>

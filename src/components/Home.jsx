@@ -36,7 +36,6 @@ function Home() {
         <img
             className="img-fluid rounded  my-2"
             src={logo}
-            //     src={imageUrl}
             alt={imageAlt}
         />
     </div>);
@@ -46,13 +45,13 @@ function Home() {
                 <div className="  min-vh-100 d-flex align-items-center justify-content-center">
                     <div className="align-middle">
                         <h1 className=" titleSFTS text-light">STONE FROM THE SKY</h1>
-                        <h2 className="text-light mt-5 mb-4 order"><p> "Songs From The Deepwater"</p>
+                        <h2 className="text-light mt-5 mb-4 order"><p> "BAKENEKO out 30 May"</p>
                         </h2>
                         <button type="button" className="btn btn-light ">
                             <Link className="nav-link fst-italic link-dark"
                                   to={{pathname: "https://stonefromthesky.bandcamp.com/merch"}}
                                   target="_blank">
-                                <h1> Order now</h1>
+                                <h1> Order other albums here</h1>
                             </Link></button>
                     </div>
                 </div>
